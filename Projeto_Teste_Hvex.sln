@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto_Teste_Hvex", "Projeto_Teste_Hvex\Projeto_Teste_Hvex.csproj", "{EE11AE06-82B4-4ABF-AB5C-A83B36A387D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto_Teste_Hvex", "Projeto_Teste_Hvex\Projeto_Teste_Hvex.csproj", "{EE11AE06-82B4-4ABF-AB5C-A83B36A387D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto_Teste_Hvex.Data", "Projeto_Teste_Hvex.Data\Projeto_Teste_Hvex.Data.csproj", "{A237EC01-EB72-4A62-8BAE-332CD830BB4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto_Teste_Hvex.Domain", "Projeto_Teste_Hvex.Domain\Projeto_Teste_Hvex.Domain.csproj", "{EF00E963-EBCB-49BC-AC8C-C7052885F257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{EE11AE06-82B4-4ABF-AB5C-A83B36A387D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE11AE06-82B4-4ABF-AB5C-A83B36A387D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE11AE06-82B4-4ABF-AB5C-A83B36A387D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A237EC01-EB72-4A62-8BAE-332CD830BB4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A237EC01-EB72-4A62-8BAE-332CD830BB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A237EC01-EB72-4A62-8BAE-332CD830BB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A237EC01-EB72-4A62-8BAE-332CD830BB4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF00E963-EBCB-49BC-AC8C-C7052885F257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF00E963-EBCB-49BC-AC8C-C7052885F257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF00E963-EBCB-49BC-AC8C-C7052885F257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF00E963-EBCB-49BC-AC8C-C7052885F257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
