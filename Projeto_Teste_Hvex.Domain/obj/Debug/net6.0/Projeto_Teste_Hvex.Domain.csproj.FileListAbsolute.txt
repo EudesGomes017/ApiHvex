@@ -1,0 +1,12 @@
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\bin\Debug\net6.0\Projeto_Teste_Hvex.Domain.deps.json
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\bin\Debug\net6.0\Projeto_Teste_Hvex.Domain.dll
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\bin\Debug\net6.0\Projeto_Teste_Hvex.Domain.pdb
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\obj\Debug\net6.0\Projeto_Teste_Hvex.Domain.csproj.AssemblyReference.cache
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\obj\Debug\net6.0\Projeto_Teste_Hvex.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\obj\Debug\net6.0\Projeto_Teste_Hvex.Domain.AssemblyInfoInputs.cache
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\obj\Debug\net6.0\Projeto_Teste_Hvex.Domain.AssemblyInfo.cs
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\obj\Debug\net6.0\Projeto_Teste_Hvex.Domain.csproj.CoreCompileInputs.cache
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\obj\Debug\net6.0\Projeto_Teste_Hvex.Domain.dll
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\obj\Debug\net6.0\refint\Projeto_Teste_Hvex.Domain.dll
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\obj\Debug\net6.0\Projeto_Teste_Hvex.Domain.pdb
+C:\Projetos C#\Projeto_Teste_Hvex\Projeto_Teste_Hvex.Domain\obj\Debug\net6.0\ref\Projeto_Teste_Hvex.Domain.dll

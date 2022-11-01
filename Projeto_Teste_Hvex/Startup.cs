@@ -5,8 +5,6 @@ using Projeto_Teste_Hvex.Domain.Interface.Repositories;
 using Projeto_Teste_Hvex.Data.Repositories;
 using Projeto_Teste_Hvex.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Text.Json.Serialization;
 using Projeto_Teste_Hvex.Domain.Interface.Services;
 
@@ -27,7 +25,7 @@ namespace Projeto_Teste_Hvex
         [Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ITestRepo, TestRepo>();
             services.AddScoped<IReportRepo, ReportRepo>();

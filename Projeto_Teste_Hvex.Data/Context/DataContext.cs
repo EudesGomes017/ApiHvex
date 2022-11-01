@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Projeto_Teste_Hvex.Data.Mapping;
 using Projeto_Teste_Hvex.Domain.Entities;
 using System;
 using System.Collections.Generic;
