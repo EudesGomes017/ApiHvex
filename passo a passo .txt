@@ -1,0 +1,13 @@
+Primeiro passo Criar o Domain e suas entidades relacionadas 
+
+EntityBase
+
+Criar os campos de default TimeStam > //pegar data e hora atual
+
+
+Interfaces > Repositorios
+
+
+Maps > mapeamento de entidades
+
+Repositories > cria os metodos para acessar o banco de dados, grava os dados  e funções de persistencia de dados
