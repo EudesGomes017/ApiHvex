@@ -10,6 +10,7 @@ namespace Projeto_Teste_Hvex.Domain.Interface.Repositories
     public interface IUserRepo : IGeralRepo
     {
         Task<User> BuscarUserPorIdAsync(int? userId);
+        Task<User> BuscarUserPorEmailAsync(string email);
         Task<User[]> BuscarUsersAsync();
     }
 }

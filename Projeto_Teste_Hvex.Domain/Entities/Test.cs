@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Projeto_Teste_Hvex.Domain.Entities
@@ -10,9 +11,12 @@ namespace Projeto_Teste_Hvex.Domain.Entities
     {
         public int DurationInSeconds { get; set; }
         public bool Status { get; set; }
-        //public Transformer? Transformer { get; set; }
-        public int? TransformerId { get; set; }
-        //public Report? Report { get; set; }
-        public int? ReportId { get; set; }
+        //RelationShips EFCORE
+        public int TransformerId { get; set; }
+        [JsonIgnore]
+        public virtual Transformer Transformer { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Report> Reports { get; set; }
+
     }
 }

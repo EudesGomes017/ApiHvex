@@ -869,7 +869,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.7"
         },
         "compile": {
           "bin/placeholder/Projeto_Teste_Hvex.Domain.dll": {}

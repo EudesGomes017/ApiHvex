@@ -26,7 +26,10 @@ namespace Projeto_Teste_Hvex
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+                
+            /*estamos adicionando um scopo >  toda vez que estamos adicionando uma tabela nova, temos que adicionar aqui.
+             quando for criar uma tabela nova temos que adicionar o passo a passo e no fim vem aqui no startup e adiciona
+            no scoopo*/
             services.AddScoped<ITestRepo, TestRepo>();
             services.AddScoped<IReportRepo, ReportRepo>();
             services.AddScoped<IUserRepo, UserRepo>();
@@ -39,9 +42,9 @@ namespace Projeto_Teste_Hvex
 
             services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling =
-                   Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+                   Newtonsoft.Json.ReferenceLoopHandling.Ignore) //ignorar looping
                .AddNewtonsoftJson(opt => opt.SerializerSettings.NullValueHandling =
-                   Newtonsoft.Json.NullValueHandling.Ignore)
+                   Newtonsoft.Json.NullValueHandling.Ignore)// NullValueHandling > se for valor null
                .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);

@@ -26,6 +26,7 @@ namespace Projeto_Teste_Hvex.Domain.Services
 
             if (await _testRepo.BuscarTestPorIdAsync(model.Id) == null)
             {
+                //esse Adicionar é do  IGeralRepo, pq o geral ele só adicionar
                 _testRepo.Adicionar(model);
 
                 if (await _testRepo.SalvarMudancasAsync())
@@ -36,10 +37,14 @@ namespace Projeto_Teste_Hvex.Domain.Services
             return null;
         }
 
+        /*quando atualizamos estamos mandando o Id no model que sta chegando  Ele tem que fazer a Busca 
+         do teste por Id */
         public async Task<Test> AtualizarTestAsync(Test model)
         {
             var test = await _testRepo.BuscarTestPorIdAsync(model.Id);
 
+            ///o model é o cara novo com as informações nova que quero atualizar no nosso test(que esta no nosso banco)
+            //ele é diferente de null, então pegue o repositorio atualizar e passa o model que estou passando
             if (test != null)
             {
                 _testRepo.Atualizar(model);

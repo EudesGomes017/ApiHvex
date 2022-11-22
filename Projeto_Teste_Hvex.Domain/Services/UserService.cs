@@ -17,22 +17,20 @@ namespace Projeto_Teste_Hvex.Domain.Services
         {
             _userRepo = userRepo;
         }
-
+        //user é objeto que estamos adicianando ele vai ter tudas as propriedades
         public async Task<User> AdicionarUserAsync(User user)
         {
+            //pelo Email que estamos enviado ele busca o usuario, ele vai fazer a buscar e vai verificar se ja existe
+            if (await _userRepo.BuscarUserPorEmailAsync(user.Email) != null)
+                throw new Exception($"Já existe um User cadastrado com o Email: {user.Email}");
 
-            if (await _userRepo.BuscarUserPorIdAsync(user.Id) != null)
-                throw new Exception($"Já existe um User cadastrado com o Id: {user.Id}");
-
-            if (await _userRepo.BuscarUserPorIdAsync(user.Id) == null)
-            {
                 _userRepo.Adicionar(user);
 
                 if (await _userRepo.SalvarMudancasAsync())
                 {
                     return user;
                 }
-            }
+            
             return null;
         }
 
@@ -58,7 +56,24 @@ namespace Projeto_Teste_Hvex.Domain.Services
             {
                 var user = await _userRepo.BuscarUserPorIdAsync(userId);
                 if (user == null)
-                    throw new Exception($"Não existe User com o Id: {userId}.");
+                    throw new Exception($"Não existe Usuário com o Id: {userId}.");
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            
+            }
+        }
+
+        public async Task<User> BuscarUserPorEmailAsync(string email)
+        {
+            try
+            {
+                var user = await _userRepo.BuscarUserPorEmailAsync(email);
+                if (user == null)
+                    throw new Exception($"Não existe Usuário com o Email: {email}.");
 
                 return user;
             }

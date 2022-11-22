@@ -15,6 +15,7 @@ namespace Projeto_Teste_Hvex.Controllers
             _testService = testService;
         }
 
+        //buscar por todos Ids
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -31,6 +32,7 @@ namespace Projeto_Teste_Hvex.Controllers
             }
         }
 
+        //Buscar po Id
         [HttpGet("{testId}")]
         public async Task<IActionResult> Get(int testId)
         {
@@ -47,7 +49,7 @@ namespace Projeto_Teste_Hvex.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar buscar Test: {test.Name}. Erro: {ex.Message}");
             }
         }
-
+            
         [HttpPost]
         public async Task<IActionResult> Post(Test model)
         {

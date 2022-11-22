@@ -18,10 +18,10 @@ namespace Projeto_Teste_Hvex.Data.Mapping
             builder.Property(c => c.Id).HasMaxLength(10).IsRequired().ValueGeneratedOnAdd();
             builder.Property(c => c.CreatedAt).IsRequired();
             builder.Property(c => c.UpdateAt).IsRequired(false);
-            builder.Property(c => c.Email).HasMaxLength(128).IsRequired();
-            builder.Property(c => c.TransformerId).HasMaxLength(10).IsRequired();
+            builder.Property(c => c.Email).HasMaxLength(128).IsRequired(false);
+            builder.Property(c => c.TransformerId).HasMaxLength(10).IsRequired(false);
 
-            //builder.HasMany(c => c.Transformers).WithOne(c => c.User).HasForeignKey(c => c.UserId).IsRequired();          
+           builder.HasMany(c => c.Transformers).WithOne(c => c.User).HasForeignKey(c => c.UserId).IsRequired();          
         }
     }
 }

@@ -11,5 +11,6 @@ namespace Projeto_Teste_Hvex.Domain.Interface.Repositories
     {
         Task<Report> BuscarReportPorIdAsync(int? reportId);
         Task<Report[]> BuscarReportsAsync();
+
     }
 }

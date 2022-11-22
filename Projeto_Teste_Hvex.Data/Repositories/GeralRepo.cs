@@ -8,15 +8,19 @@ using System.Threading.Tasks;
 
 namespace Projeto_Teste_Hvex.Data.Repositories
 {
+
+    /*Adicionar na tabela, Atualizar,Deletar, DeletarVarias e SalvarMudancasAsync*/
     public class GeralRepo : IGeralRepo
     {
-        private readonly DataContext _context;
+        private readonly DataContext _context; // fazemos a injeção o contexto dentro da classe GeralRepo
 
+        //injetamos dentro do contrutor dele 
         public GeralRepo(DataContext context)
         {
             _context = context;
         }
 
+        //aqui é a condigo para construir a tabela
         public async void Adicionar<T>(T entity) where T : class
         {
             await _context.AddAsync(entity);

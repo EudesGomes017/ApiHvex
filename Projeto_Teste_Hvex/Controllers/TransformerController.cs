@@ -8,8 +8,10 @@ namespace Projeto_Teste_Hvex.Controllers
     [Route("api/[controller]")]
     public class TransformerController : ControllerBase
     {
+        //injeção de dependencia
         private readonly ITransformerService _transformerService;
 
+        //contrutor
         public TransformerController(ITransformerService transformerService)
         {
             _transformerService = transformerService;
@@ -102,7 +104,9 @@ namespace Projeto_Teste_Hvex.Controllers
 
                 if (await _transformerService.DeletarTransformerPorIdAsync(transformerId))
                 {
-                    return Ok(new { message = $"O Transformer: {transformer.Name} deletado com sucesso" });
+                    return this.StatusCode(StatusCodes.Status203NonAuthoritative,
+                       $"O Transformer: {transformer.Name} deletado com sucesso");
+                    //return Ok(new { message = $"O Transformer: {transformer.Name} deletado com sucesso" });
                 }
                 else
                 {

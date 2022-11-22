@@ -11,5 +11,5 @@ namespace Projeto_Teste_Hvex.Domain.Interface.Repositories
     {
         Task<Test> BuscarTestPorIdAsync(int? testId);
         Task<Test[]> BuscarTestsAsync();
-    }
+    }   
 }

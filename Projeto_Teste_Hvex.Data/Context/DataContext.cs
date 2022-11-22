@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Projeto_Teste_Hvex.Data.Mapping;
 using Projeto_Teste_Hvex.Domain.Entities;
@@ -22,10 +23,16 @@ namespace Projeto_Teste_Hvex.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            //eles batem no TestMap() e verificar se  as codnições criadas nelas
             modelBuilder.ApplyConfiguration(new TestMap());
             modelBuilder.ApplyConfiguration(new ReportMap());
             modelBuilder.ApplyConfiguration(new TransformerMap());
             modelBuilder.ApplyConfiguration(new UserMap());
+           
+         
+            
         }
+
+
     }
 }

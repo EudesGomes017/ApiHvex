@@ -18,12 +18,13 @@ namespace Projeto_Teste_Hvex.Data.Mapping
             builder.Property(c => c.Id).HasMaxLength(10).IsRequired().ValueGeneratedOnAdd();
             builder.Property(c => c.CreatedAt).IsRequired();
             builder.Property(c => c.UpdateAt).IsRequired(false);
-            builder.Property(c => c.DurationInSeconds).HasDefaultValue(0).IsRequired();
+            builder.Property(c => c.DurationInSeconds).HasDefaultValue(0).IsRequired(); //HasDefaultValue se não colocamos  vai criar as tabelas tudo null
             builder.Property(c => c.TransformerId).HasMaxLength(10).IsRequired();
             builder.Property(c => c.Status).IsRequired().HasDefaultValue(true);
 
-            //builder.HasOne(c => c.Transformer).WithMany(c => c.Tests).HasForeignKey(c => c.TransformerId).IsRequired();
-            //builder.HasOne(c => c.Report).WithOne(c => c.Test).IsRequired();
+            builder.HasOne(c => c.Transformer).WithMany(c => c.Tests).HasForeignKey(c => c.TransformerId).OnDelete(DeleteBehavior.Cascade).IsRequired();
+            builder.HasOne(c => c.Report).WithOne(c => c.Test).OnDelete(DeleteBehavior.Cascade).IsRequired();
+            
         }
     }
 }

@@ -20,13 +20,18 @@ namespace Projeto_Teste_Hvex.Data.Repositories
 
         public async Task<Test> BuscarTestPorIdAsync(int? testId)
         {
-            IQueryable<Test> query = _context.Test;
+            IQueryable<Test> query = _context.Test; 
 
             query = query.AsNoTracking()
                          .Where(x => x.Id == testId)
-                         .OrderBy(x => x.Id);
+                         .OrderBy(x => x.Id);/*OrderBy faz com que a sequência ou subsequência (grupo) 
+                                              * retornada seja classificada em ordem crescente 
+                                              * ou decrescente*/
 
-            return await query.FirstOrDefaultAsync();
+            return await query.FirstOrDefaultAsync(); /*FirstOrDefaultAsync retorna de forma assíncrona o 
+                                                       * primeiro elemento de uma sequência 
+                                                       * ou um valor padrão se a sequência não 
+                                                       * contiver elementos*/
         }
 
         public async Task<Test[]> BuscarTestsAsync()

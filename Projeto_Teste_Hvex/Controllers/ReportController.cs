@@ -8,6 +8,7 @@ namespace Projeto_Teste_Hvex.Controllers
     [Route("api/[controller]")]
     public class ReportController : ControllerBase
     {
+        //injeção de dependencia 
         private readonly IReportService _reportService;
 
         public ReportController(IReportService reportService)
@@ -15,21 +16,7 @@ namespace Projeto_Teste_Hvex.Controllers
             _reportService = reportService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            try
-            {
-                var reports = await _reportService.BuscarReportsAsync();
-                if (reports == null) return NoContent();
-
-                return Ok(reports);
-            }
-            catch (Exception ex)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar buscar todos os Reports. Erro: {ex.Message}");
-            }
-        }
+         
 
         [HttpGet("{reportId}")]
         public async Task<IActionResult> Get(int reportId)

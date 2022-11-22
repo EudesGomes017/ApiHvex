@@ -8,7 +8,7 @@ namespace Projeto_Teste_Hvex.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IUserService _userService; // injetando Service da camada de Doamin
 
         public UserController(IUserService userService)
         {

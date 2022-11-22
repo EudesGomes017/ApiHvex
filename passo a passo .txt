@@ -2,6 +2,10 @@ Primeiro passo Criar o Domain e suas entidades relacionadas
 
 EntityBase
 
+quando passar os ItemGrups trocar os nomes dos projetos
+
+ajustar conectionString  /  appsettings.Development
+
 Criar os campos de default TimeStam > //pegar data e hora atual
 
 
@@ -10,4 +14,93 @@ Interfaces > Repositorios
 
 Maps > mapeamento de entidades
 
-Repositories > cria os metodos para acessar o banco de dados, grava os dados  e funções de persistencia de dados
+Repositories > cria os metodos para acessar o banco de dados, grava os dados  e funções de persistencia de dados.
+ 
+O projeto foi separado por camadas, Projeto_Teste_Hvex é a API onde tem os controllers, Programs e startups(onde tem a configuração de inicialização do sistema
+ / camada de DATA, tem o context(os codigos do banco de dados ) / Mapping, fiz  ele separado, sempre que gerar um nova migrafion temos q direcionar para  DATA onde estão
+os contextos e.
+
+
+foi separa por camada para poder dividas as responsabilidades
+
+Camada de Data responsavel pelo mapeamento das tabelas Definimos as  configurações de cada propriedade. Parte do Mapping definimos as configurações de cada propriedades
+
+ builder.ToTable("report");
+            builder.HasKey(c => c.Id);
+            builder.Property(c => c.Id).HasMaxLength(10).IsRequired().ValueGeneratedOnAdd(); //ValueGeneratedOnAdd quer dizer q autocremental
+            builder.Property(c => c.CreatedAt).IsRequired(); //IsRequired se é requerida sim ou não
+            builder.Property(c => c.UpdateAt).IsRequired(false);
+            builder.Property(c => c.TestId).HasMaxLength(10).IsRequired();
+            builder.Property(c => c.TransformerId).HasMaxLength(10).IsRequired();
+            builder.Property(c => c.Status).IsRequired().HasDefaultValue(true);
+
+
+só fazemos Migration se atualizarmos a entidades ou Mapping.
+
+camada de Data / Repositorio, faz a consulta no banco, onde esta os contexto de todos e estamos fazendo as consultas.
+ GeralRepo.cs ele é de adicionar na tabela, atualizar, deletar e deletar varias  e salvar .
+
+
+camada do Domain onde esta as parte de entidades e seus serviços, vai bater la no controllers de usuarios por exemplo, busca todos os usuarios, lá injetamos
+private readonly IReportService _reportService; quando o metodo   var reports = await _reportService.BuscarReportsAsync();  ele bate IUserService propriedade
+ Task<User[]> BuscarUsersAsync();, ele cai na interface da interface ele cai no service
+
+[HttpGet] 
+        public async Task<IActionResult> Get()
+        {
+            try
+            {
+                var reports = await _reportService.BuscarReportsAsync(); 
+                if (reports == null) return NoContent();
+
+                return Ok(reports);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar buscar todos os Reports. Erro: {ex.Message}");
+            }
+        }
+
+
+na camada do Domain temos as Interface do REPOSITORIOS E SERVICES PQ  ele precisa visualizar os contratos dos repositorios e ser injetado nele, ele é injetado em todo service
+vamos ter a Interface do Repositorio referente a ele! para poder ter acesso ao banco, pq no Service para fazer Buascar, Atualizar, Deletar e DeletarVarias tem que ter 
+acesso essa parte de Repositorio
+
+
+quando vmaos nos contrllers exemplo usuarios, n´so injetamos private readonly IUserService _userService; 
+
+Camada de Controllers eles não visualiza os Services do Domai, ele visualiza as interfaces ae ele bate na interface e ela chama o metodo que está no Service do Doamain
+
+No controller injetamos Service, e no Service injetamos o Repositorio( que é a camada de Data) pq é ele que vai fazer a chamada da consulta do Banco retornar
+o resultado pra ele.
+
+se naõ for declarado na Interface o Controller nao vai ter acesso a ele.
+
+
+
+
+
+-----------------------------------------------------------
+
+
+se quizermos inclui um novo na pasta do Mapping onde estão repositorioes, vamos na entidades do Domain criamos uma propriedade, voltamos para Mapping/repositories/
+no memso nome da entidade e colocamos ela. exe > Usar vai em UsarMap.
+
+sempre que fizemos alteração nas pastas de Mapping e Entidade, temos que fazer uma nova migration e update-DataBase.
+
+quando for gerar a migration sempre colcoar no console a parte de Data, onde tem nosso contexto e Mapping.
+-------------------------------------------
+
+
+
+Camadas de Datas temos repositorios que faz / GeralRepo > ele faz a consulta no banco, como temos o contexto fazemos a injeção dentro do GeralRepo.
+	
+
+-------------------------------------------------
+
+
+
+Startup >  toda vez que criarmos //
+
+
+pesquisar sobre DTO COM PROFILE

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Projeto_Teste_Hvex.Data.Context;
 
@@ -11,9 +12,10 @@ using Projeto_Teste_Hvex.Data.Context;
 namespace Projeto_Teste_Hvex.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221110024658_Ajustado_Campos_Tabela_User")]
+    partial class Ajustado_Campos_Tabela_User
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,12 +257,6 @@ namespace Projeto_Teste_Hvex.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TestId")
-                        .IsUnique();
-
-                    b.HasIndex("TransformerId")
-                        .IsUnique();
-
                     b.ToTable("report", (string)null);
                 });
 
@@ -284,6 +280,9 @@ namespace Projeto_Teste_Hvex.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ReportId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Status")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -298,8 +297,6 @@ namespace Projeto_Teste_Hvex.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TransformerId");
 
                     b.ToTable("test", (string)null);
                 });
@@ -317,6 +314,7 @@ namespace Projeto_Teste_Hvex.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Current")
+                        .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
@@ -332,6 +330,11 @@ namespace Projeto_Teste_Hvex.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0);
+
+                    b.Property<int?>("ReportId")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
 
                     b.Property<string>("TensionClass")
                         .IsRequired()
@@ -349,8 +352,6 @@ namespace Projeto_Teste_Hvex.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("transformer", (string)null);
                 });
@@ -435,64 +436,6 @@ namespace Projeto_Teste_Hvex.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Projeto_Teste_Hvex.Domain.Entities.Report", b =>
-                {
-                    b.HasOne("Projeto_Teste_Hvex.Domain.Entities.Test", "Test")
-                        .WithOne("Report")
-                        .HasForeignKey("Projeto_Teste_Hvex.Domain.Entities.Report", "TestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Projeto_Teste_Hvex.Domain.Entities.Transformer", "Transformer")
-                        .WithOne("Report")
-                        .HasForeignKey("Projeto_Teste_Hvex.Domain.Entities.Report", "TransformerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Test");
-
-                    b.Navigation("Transformer");
-                });
-
-            modelBuilder.Entity("Projeto_Teste_Hvex.Domain.Entities.Test", b =>
-                {
-                    b.HasOne("Projeto_Teste_Hvex.Domain.Entities.Transformer", "Transformer")
-                        .WithMany("Tests")
-                        .HasForeignKey("TransformerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Transformer");
-                });
-
-            modelBuilder.Entity("Projeto_Teste_Hvex.Domain.Entities.Transformer", b =>
-                {
-                    b.HasOne("Projeto_Teste_Hvex.Domain.Entities.User", "User")
-                        .WithMany("Transformers")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Projeto_Teste_Hvex.Domain.Entities.Test", b =>
-                {
-                    b.Navigation("Report");
-                });
-
-            modelBuilder.Entity("Projeto_Teste_Hvex.Domain.Entities.Transformer", b =>
-                {
-                    b.Navigation("Report");
-
-                    b.Navigation("Tests");
-                });
-
-            modelBuilder.Entity("Projeto_Teste_Hvex.Domain.Entities.User", b =>
-                {
-                    b.Navigation("Transformers");
                 });
 #pragma warning restore 612, 618
         }
