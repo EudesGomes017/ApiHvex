@@ -17,24 +17,25 @@ namespace Projeto_Teste_Hvex.Domain.Services
         {
             _testRepo = testRepo;
         }
-
         public async Task<Test> AdicionarTestAsync(Test model)
         {
-
-            if (await _testRepo.BuscarTestPorIdAsync(model.Id) != null)
-                throw new Exception($"Já existe um Test cadastrado com o Id: {model.Id}");
-
-            if (await _testRepo.BuscarTestPorIdAsync(model.Id) == null)
             {
-                //esse Adicionar é do  IGeralRepo, pq o geral ele só adicionar
-                _testRepo.Adicionar(model);
 
-                if (await _testRepo.SalvarMudancasAsync())
+                if (await _testRepo.BuscarTestPorIdAsync(model.Id) != null)
+                    throw new Exception($"Já existe um Test cadastrado com o Id: {model.Id}");
+
+                if (await _testRepo.BuscarTestPorIdAsync(model.Id) == null)
                 {
-                    return model;
+                    //esse Adicionar é do  IGeralRepo, pq o geral ele só adicionar
+                    _testRepo.Adicionar(model);
+
+                    if (await _testRepo.SalvarMudancasAsync())
+                    {
+                        return model;
+                    }
                 }
+                return null;
             }
-            return null;
         }
 
         /*quando atualizamos estamos mandando o Id no model que sta chegando  Ele tem que fazer a Busca 

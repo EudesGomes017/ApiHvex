@@ -12,20 +12,23 @@ namespace Projeto_Teste_Hvex.Domain.Services
     public class TransformerService : ITransformerService
     {
         private readonly ITransformerRepo _transformerRepo;
+        private readonly IUserRepo _userRepo;
 
-        public TransformerService(ITransformerRepo transformerRepo)
+        public TransformerService(ITransformerRepo transformerRepo, IUserRepo userRepo)
         {
             _transformerRepo = transformerRepo;
+            _userRepo = userRepo;
         }
 
         public async Task<Transformer> AdicionarTransformerAsync(Transformer model)
         {
-
+            var user = await _userRepo.BuscarUserPorIdAsync(model.UserId);
             if (await _transformerRepo.BuscarTransformerPorIdAsync(model.Id) != null)
                 throw new Exception($"Já existe um Transformer cadastrado com o Id: {model.Id}");
 
-            if (await _transformerRepo.BuscarTransformerPorIdAsync(model.Id) == null)
+            if (user != null)
             {
+                //model.User = user;
                 _transformerRepo.Adicionar(model);
 
                 if (await _transformerRepo.SalvarMudancasAsync())

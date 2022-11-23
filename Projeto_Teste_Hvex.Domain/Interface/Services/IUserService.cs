@@ -12,7 +12,6 @@ namespace Projeto_Teste_Hvex.Domain.Interface.Services
         Task<User> AdicionarUserAsync(User user);
         Task<User> AtualizarUserAsync(User user);
         Task<User> BuscarUserPorIdAsync(int? userId);
-        Task<User> BuscarUserPorEmailAsync(string email);
         Task<User[]> BuscarUsersAsync();
         Task<bool> DeletarUserPorIdAsync(int? userId);
     }

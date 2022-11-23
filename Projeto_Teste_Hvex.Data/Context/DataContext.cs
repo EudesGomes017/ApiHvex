@@ -28,9 +28,6 @@ namespace Projeto_Teste_Hvex.Data.Context
             modelBuilder.ApplyConfiguration(new ReportMap());
             modelBuilder.ApplyConfiguration(new TransformerMap());
             modelBuilder.ApplyConfiguration(new UserMap());
-           
-         
-            
         }
 
 

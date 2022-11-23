@@ -12,20 +12,17 @@ namespace Projeto_Teste_Hvex.Data.Repositories
 {
     public class ReportRepo : GeralRepo, IReportRepo
     {
-        private readonly DataContext _context; //injeção de dependencias
-
-        //chamando no contrutor
+        private readonly DataContext _context;
         public ReportRepo(DataContext context) : base(context)
         {
             _context = context;
         }
 
-        //tendo acesso a nossa tabela
         public async Task<Report> BuscarReportPorIdAsync(int? reportId)
         {
             IQueryable<Report> query = _context.Report;
 
-            query = query.AsNoTracking() //AsNoTracking para não travar a requisição
+            query = query.AsNoTracking()
                          .Where(x => x.Id == reportId)
                          .OrderBy(x => x.Id);
 
@@ -36,7 +33,7 @@ namespace Projeto_Teste_Hvex.Data.Repositories
         {
             IQueryable<Report> query = _context.Report;
 
-            query = query.AsNoTracking() //AsNoTracking para não travar a requisição
+            query = query.AsNoTracking()
                          .OrderBy(x => x.Id);
 
             return await query.ToArrayAsync();

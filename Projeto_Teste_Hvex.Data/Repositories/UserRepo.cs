@@ -29,17 +29,6 @@ namespace Projeto_Teste_Hvex.Data.Repositories
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<User> BuscarUserPorEmailAsync(string email)
-        {
-            IQueryable<User> query = _context.User;
-
-            query = query.AsNoTracking()
-                         .Where(x => x.Email == email)
-                         .OrderBy(x => x.Id);
-
-            return await query.FirstOrDefaultAsync();
-        }
-
         public async Task<User[]> BuscarUsersAsync()
         {
             IQueryable<User> query = _context.User;
@@ -49,5 +38,6 @@ namespace Projeto_Teste_Hvex.Data.Repositories
 
             return await query.ToArrayAsync();
         }
+
     }
 }
